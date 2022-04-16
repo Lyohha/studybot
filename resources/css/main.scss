@@ -1,0 +1,16 @@
+.nav.moves > li > a i {
+	margin-right: 0px;
+}
+
+.nav.moves > li > a {
+	display: flex;
+    justify-content: space-between;
+	& span {
+		display: flex;
+    	margin: auto 0;
+	}
+}
+
+.none {
+	display: none;
+}
