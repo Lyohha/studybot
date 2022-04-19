@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+// middleware('web')->
+Route::get('/profile_info', 'App\Http\Controllers\Api\ProfileInfoController@index');

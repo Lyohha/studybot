@@ -15,4 +15,8 @@ class Roles extends Model
     ];
 
     public $table = 'roles';
+
+    public static $list = array(
+        'edit_roles',
+    );
 }

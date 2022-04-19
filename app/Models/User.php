@@ -41,4 +41,35 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function roles() {
+        return $this->hasMany('App\Models\UserRoleLink', 'user_id', 'id');
+    }
+
+    public function getRules() {
+        $list = Roles::$list;
+
+        $rules = array();
+
+        $roles = $this->roles()->get();
+
+        if(!isset($roles)) 
+            $roles = array();
+
+        foreach($list as $item) {
+            $rules[$item] = false;
+
+            foreach($roles as $role)
+            {
+                // dd($role->role);
+                if($role->role->$item)
+                {
+                    $rules[$item] = true;
+                    break;
+                }
+            }
+        }
+        
+        return $rules;
+    }
 }

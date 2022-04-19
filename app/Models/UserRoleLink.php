@@ -15,4 +15,12 @@ class UserRoleLink extends Model
     ];
 
     public $table = 'user_role_link';
+
+    public function user() {
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
+
+    public function role() {
+        return $this->belongsTo('App\Models\Roles', 'roles_id', 'id');
+    }
 }

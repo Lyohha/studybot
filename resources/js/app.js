@@ -14,4 +14,18 @@ Alpine.start();
 import { createApp } from "vue";
 
 import App from "./components/App.vue";
-createApp(App).mount('#app');
+
+// createApp({
+//     components: {
+//         App,
+//         ProfileInfo
+//     }
+// }).mount('#app');
+// export default {
+//     components: {
+//         App,
+//         ProfileInfo,
+//     }
+// }
+
+createApp(App).mount("#wrapper")

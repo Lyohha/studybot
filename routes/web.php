@@ -13,12 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index.index');
-});
+// Route::get('/', function () {
+//     return view('index.index');
+// });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/suer', function () {
+//     return view('index.index');
+// });
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+require __DIR__.'/vue.php';
+
+Route::get('/{any_path?}', 'App\Http\Controllers\IndexController@index')->where('any_path', '(.*)')->name('app.main');
+Route::get('/users/list', 'App\Http\Controllers\IndexController@index404')->name('app.users.list');
+Route::get('/users/edit/{id}', 'App\Http\Controllers\IndexController@index404')->name('app.users.edit');
