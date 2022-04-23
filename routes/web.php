@@ -30,5 +30,6 @@ require __DIR__.'/auth.php';
 require __DIR__.'/vue.php';
 
 Route::get('/{any_path?}', 'App\Http\Controllers\IndexController@index')->where('any_path', '(.*)')->name('app.main');
-Route::get('/users/list', 'App\Http\Controllers\IndexController@index404')->name('app.users.list');
-Route::get('/users/edit/{id}', 'App\Http\Controllers\IndexController@index404')->name('app.users.edit');
+Route::get('/users', 'App\Http\Controllers\IndexController@index404')->name('app.users.list');
+Route::get('/users/add', 'App\Http\Controllers\IndexController@index404')->name('app.users.add');
+Route::get('/users/{id}', 'App\Http\Controllers\IndexController@index404')->name('app.users.edit');

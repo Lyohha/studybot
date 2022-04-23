@@ -14,6 +14,14 @@ Alpine.start();
 import { createApp } from "vue";
 
 import App from "./components/App.vue";
+import Navigation from "./components/Navigation.vue";
+import { createWebHistory, createRouter } from "vue-router";
+
+const router = createRouter({
+    routes: Navigation.routes,
+    history: createWebHistory(),
+})
+
 
 // createApp({
 //     components: {
@@ -27,5 +35,6 @@ import App from "./components/App.vue";
 //         ProfileInfo,
 //     }
 // }
-
-createApp(App).mount("#wrapper")
+const app = createApp(App);
+app.use(router);
+app.mount("#wrapper");

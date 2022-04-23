@@ -3,7 +3,7 @@
         <div class="sidebar-collapse">
             <ul class="nav metismenu" id="side-menu">
                <ProfileInfo :user="user"/>
-               <MainMenu/>
+               <MainMenu :user="user"/>
             </ul>
 
         </div>

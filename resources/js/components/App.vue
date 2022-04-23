@@ -3,7 +3,8 @@
     <div id="page-wrapper" class="gray-bg">
         <Header/>
         <div>
-            <h1>Vue 3 App</h1>
+            <!-- <Navigation/> -->
+            <router-view></router-view>
         </div>
         <Footer/>
     </div>
@@ -27,7 +28,8 @@ export default{
     components: {
         Header,
         Footer,
-        Sidebar
+        Sidebar,
+        // Navigation
     },
     methods: {
         async fetchInfo() {
@@ -45,7 +47,7 @@ export default{
     },
     mounted() {
         this.fetchInfo();
-    }
+    },
 }
 
 </script>

@@ -1,28 +1,41 @@
 <template>
-    <li v-for="item in items" :class="{ active: item.url == active }">
-        <a v-bind:href="item.url">
-            <i class="fa" :class="item.icon"></i> 
-            <span class="nav-label">{{ item.name }}</span>
-            <span class="fa arrow"></span>
-        </a>
-            <ul class="nav nav-second-level">
-                <li v-for="subitem in item.submenu" :class="{ active: subitem.url == active }">
-                    <a  v-bind:href="subitem.url">{{ subitem.name }}</a>
-                </li>
-            </ul>
-    </li>
+    <MenuItem v-for="item in items" :key="item.name" :item="item" :user="user" />
 </template>
 
 <script>
     import axios from "axios"
+    import MenuItem from "./MainMenuItem.vue"
 
     export default {
         components: {
+            MenuItem,
         },
         data() {
-            return {
-                items: [],
-                active: '/test',
+            return { 
+                items: [
+                    {
+                        name: 'main',
+                        title: 'Dashboard',
+                    },
+                    {
+                        name: 'users.list',
+                        title: 'Users',
+                        icon: 'fa-link',
+                        rule: 'edit_users',
+                        subItems: [
+                            {
+                                name: 'users.list',
+                                title: 'Users List',
+                                rule: 'edit_users',
+                            },
+                            {
+                                name: 'users.add',
+                                title: 'Users add',
+                                rule: 'edit_users',
+                            }
+                        ]
+                    }
+                ] 
             };
         },
         methods: {
@@ -37,10 +50,11 @@
                 catch(error) {
                     console.log(error);
                 }
-            }
+            },
         },
         mounted() {
             // this.fetchInfo();
-        }
+        },
+        props: ['user']
     }
 </script>
