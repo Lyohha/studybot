@@ -42,8 +42,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function roles() {
+    public function linked_roles() {
         return $this->hasMany('App\Models\UserRoleLink', 'user_id', 'id');
+    }
+
+    public function roles() {
+        $request = $this->hasMany('App\Models\UserRoleLink', 'user_id', 'id');
+        $request->join('roles AS r', 'user_role_link.roles_id', '=', 'r.id');
+
+        return $request;
     }
 
     public function getRules() {

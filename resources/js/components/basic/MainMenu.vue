@@ -30,8 +30,26 @@
                             },
                             {
                                 name: 'users.add',
-                                title: 'Users add',
+                                title: 'Add User',
                                 rule: 'edit_users',
+                            }
+                        ]
+                    },
+                    {
+                        name: 'roles.list',
+                        title: 'Roles',
+                        icon: 'fa-link',
+                        rule: 'edit_roles',
+                        subItems: [
+                            {
+                                name: 'roles.list',
+                                title: 'Roles List',
+                                rule: 'edit_roles',
+                            },
+                            {
+                                name: 'roles.add',
+                                title: 'Add Role',
+                                rule: 'edit_roles',
                             }
                         ]
                     }

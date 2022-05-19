@@ -12,11 +12,13 @@ class Roles extends Model
     protected $fillable = [
         'name',
         'edit_roles',
+        'edit_users',
     ];
 
     public $table = 'roles';
 
     public static $list = array(
         'edit_roles',
+        'edit_users',
     );
 }

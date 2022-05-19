@@ -1,5 +1,5 @@
 <template>
-    <li :class="{ active: active }">
+    <li v-if="item.rule == null || (user && user.rules[item.rule])" :class="{ active: active }">
         <a href="#" v-if="item.subItems" @click.prevent="onClick">
             <i class="fa" :class="item.icon"></i> 
             <span class="nav-label">{{ item.title }}</span>
@@ -12,7 +12,7 @@
         </router-link>
         <ul v-if="item.subItems" class="nav nav-second-level" :class="{ collapse: !active }">
             <li v-for="subItem in item.subItems" :key="item.name + '_' + subItem.name">
-                <MenuSubItem :subItem="subItem" />
+                <MenuSubItem v-if="user && user.rules[subItem.rule]" :subItem="subItem"/>
             </li>
         </ul>
     </li>

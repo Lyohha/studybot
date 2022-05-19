@@ -4,7 +4,7 @@
         <Header/>
         <div>
             <!-- <Navigation/> -->
-            <router-view></router-view>
+            <router-view :user="user"></router-view>
         </div>
         <Footer/>
     </div>
@@ -22,6 +22,7 @@ export default{
             user: {
                 name: 'Loading',
                 role: 'Loading',
+                rules: {},
             },
         }
     },
@@ -37,7 +38,7 @@ export default{
                 const url = '/vue_api/user_info';
                 const result = await axios.get(url);
                 // console.log(response);
-                // console.log(response.data);
+                console.log(result.data);
                 this.user = result.data;
             }
             catch(error) {

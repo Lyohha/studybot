@@ -15,6 +15,8 @@ import { createApp } from "vue";
 
 import App from "./components/App.vue";
 import Navigation from "./components/Navigation.vue";
+import Select from "./components/form/Select.vue";
+import SelectMultiple from "./components/form/SelectMultiple.vue";
 import { createWebHistory, createRouter } from "vue-router";
 
 const router = createRouter({
@@ -37,4 +39,6 @@ const router = createRouter({
 // }
 const app = createApp(App);
 app.use(router);
+app.component('custom-select', Select);
+app.component('custom-select-multiple', SelectMultiple);
 app.mount("#wrapper");
