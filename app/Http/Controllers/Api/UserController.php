@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -269,5 +270,39 @@ class UserController extends Controller
             return abort(403);
 
         User::destroy($id);
+    }
+
+    /**
+     * Login users by api.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function login(Request $request)
+    {
+        $params = $request->validate([
+            'email'         => 'required|string|email',
+            'password'      => [
+                'required',
+                'string',
+                Password::min(8)
+                    ->letters()
+                    // ->numbers()
+                    // ->mixedCase()
+            ]
+        ]);
+
+        if (!Auth::guard('web')->attempt($params)) {
+            return $this->error('Credentials not match', 401);
+        }
+
+        $token = Str::random(80);
+
+        Auth::guard('web')->user()->forceFill([
+            'access_token'  => hash('sha256', $token)
+        ])->save();
+
+
+        return response()->json(['token' => $token]);
     }
 }

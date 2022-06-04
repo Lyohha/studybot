@@ -11,6 +11,7 @@
     const Roles = () => import('./roles/List.vue');
     const AddRole = () => import('./roles/Add.vue');
     const EditRole = () => import('./roles/Edit.vue');
+    const Login = () => import('./auth/login.vue');
     import Page404 from './404/404.vue';
 
     const routes = [
@@ -18,6 +19,11 @@
             name: 'main',
             path: '/',
             component: Dashboard,
+        },
+        {
+            name: 'login',
+            path: '/login',
+            component: Login,
         },
         {
             name: 'users.list',
